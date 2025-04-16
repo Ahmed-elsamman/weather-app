@@ -1,0 +1,21 @@
+$main_color: #3498db;
+$secondary_color: #2ecc71;
+$accent_color: #e74c3c;
+$warning_color: #f39c12;
+$background_color: #ecf0f1;
+
+$font_color: #2c3e50;
+$font_family: 'Arial, sans-serif';
+$font_size: 16px;
+$border_radius: 5px;
+
+
+// create a map of colors object 
+$colors:(
+    primary: #3498db,
+    secondary: #2ecc71,
+    accent: #e74c3c,
+    warning: #f39c12,
+    light: #ecf0f1,
+    font: #2c3e50
+);
