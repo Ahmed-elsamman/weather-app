@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+// src/styles.scss
+@use './styles/themes'; // Importing the theme variables
+// Light Theme
+body.light-theme {
+  background-color: themes.$light-background;
+  color: themes.$light-text;
+
+  button {
+    background-color: themes.$light-primary;
+    color: themes.$light-text;
+    border: 1px solid darken(themes.$light-primary, 10%);
+
+    &:hover {
+      background-color: darken(themes.$light-primary, 10%);
+    }
+  }
+}
+
+// Dark Theme
+body.dark-theme {
+  background-color: themes.$dark-background;
+  color: themes.$dark-text;
+
+  button {
+    background-color: themes.$dark-primary;
+    color: themes.$dark-text;
+    border: 1px solid lighten(themes.$dark-primary, 10%);
+
+    &:hover {
+      background-color: lighten(themes.$dark-primary, 10%);
+    }
+  }
+}
