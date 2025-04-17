@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ThemesService } from '../../services/themes.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +11,17 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  toggleTheme(): void {
-    const body = document.body;
-    body.classList.toggle('light-theme');
-    body.classList.toggle('dark-theme');
+constructor(private _themesService: ThemesService) { }
+  toggleTheme() {
+    this._themesService.toggleTheme();
+    console.log('Theme toggled  ' + this._themesService.currentTheme);
+    
   }
 
+  get currentTheme() {
+    return this._themesService.currentTheme;
+  }
+  
 }
+
+

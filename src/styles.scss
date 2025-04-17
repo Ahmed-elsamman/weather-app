@@ -1,33 +1,59 @@
 // src/styles.scss
 @use './styles/themes'; // Importing the theme variables
-// Light Theme
-body.light-theme {
-  background-color: themes.$light-background;
-  color: themes.$light-text;
+// // Light Theme
+// body.light-theme {
+//   background-color: themes.$light-background;
+//   color: themes.$light-text;
 
-  button {
-    background-color: themes.$light-primary;
-    color: themes.$light-text;
-    border: 1px solid darken(themes.$light-primary, 10%);
+//   button {
+//     background-color: themes.$light-primary;
+//     color: themes.$light-text;
+//     border: 1px solid darken(themes.$light-primary, 10%);
 
-    &:hover {
-      background-color: darken(themes.$light-primary, 10%);
-    }
-  }
-}
+//     &:hover {
+//       background-color: darken(themes.$light-primary, 10%);
+//     }
+//   }
+// }
 
-// Dark Theme
+// // Dark Theme
+// body.dark-theme {
+//   background-color: themes.$dark-background;
+//   color: themes.$dark-text;
+
+//   button {
+//     background-color: themes.$dark-primary;
+//     color: themes.$dark-text;
+//     border: 1px solid lighten(themes.$dark-primary, 10%);
+
+//     &:hover {
+//       background-color: lighten(themes.$dark-primary, 10%);
+//     }
+//   }
+// }
 body.dark-theme {
-  background-color: themes.$dark-background;
-  color: themes.$dark-text;
-
-  button {
-    background-color: themes.$dark-primary;
-    color: themes.$dark-text;
-    border: 1px solid lighten(themes.$dark-primary, 10%);
-
-    &:hover {
-      background-color: lighten(themes.$dark-primary, 10%);
-    }
-  }
+  --bg-color: $dark-bg;
+  --text-color: $dark-text;
+  --border-color: $dark-border;
+  --icon-sun-color: $dark-icon-sun;
+  --icon-cloud-color: $dark-icon-cloud;
+  --btn-bg-color: $dark-btn-bg;
+  --btn-text-color: $dark-btn-text;
 }
+
+body.light-theme {
+  --bg-color: $light-bg;
+  --text-color: $light-text;
+  --border-color: $light-border;
+  --icon-sun-color: $light-icon-sun;
+  --icon-cloud-color: $light-icon-cloud;
+  --btn-bg-color: $light-btn-bg;
+  --btn-text-color: $light-btn-text;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  transition: background-color 0.3s ease; // لتحسين التفاعلية [[5]]
+}
+
