@@ -1,0 +1,73 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+width: 95%;
+//   background-color: aqua;
+  gap: 10px;
+  padding: 10px;
+    border-radius: 10px;
+    box-shadow: 12px 5px 10px rgba(0, 0, 0, 0.678);
+    border: 1px solid black;
+    margin: auto;
+  .left-sec{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    // background-color: lightcoral;
+    width: 30%;
+    span{
+        font-size: 7rem;
+        font-weight: bold;
+        color: linear-gradient(90deg,rgba(128, 128, 128, 1) 0%, rgba(69, 105, 84, 1) 50%, rgba(0, 0, 0, 1) 100%);
+    }
+
+  }
+
+   .weather-sec{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 30%;
+       .weather-description{
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 5% 0;
+        }
+
+
+       
+        img{
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            box-shadow: 12px 5px 10px rgba(0, 0, 0, 0.678);
+            margin: auto;
+            padding: 10px;
+
+        }
+    }
+
+
+    .content-sec{
+        display: flex;
+        gap: 10px;
+        width: 30%;
+    }
+    .content-sec-item{
+      flex: 2 2 calc(50% - 16px); /* Adjusts width to 50% minus gap */
+
+m      .details-item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+    
+  }
+
+ 
+}

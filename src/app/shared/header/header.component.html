@@ -5,11 +5,11 @@
         </label>
     </div>
     <div class="content">
-        <input type="search" placeholder="Search by location.." />
+        <input type="search" placeholder="Search by location.."      [(ngModel)]="city"        />
         
     </div>
     <div class="location">
-        <button class="location-button">
+        <button class="location-button" (click)="onLocationButtonClick()">
             <span>Location</span>
         </button>
     </div>
