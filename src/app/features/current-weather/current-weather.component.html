@@ -1,53 +1,60 @@
 <div class="container">
 
-    <div class="left-sec">
-        <div>
-            <span>{{currentWeather?.elevation }} </span><span class="celsius">c</span>
+@if (loading) {
+
+        <div class="left-sec">
+            <div>
+                <span>{{currentWeather?.temperature }} </span><span class="celsius">c</span>
+            </div>
+            <div></div>
+            <div></div>
         </div>
-        <div></div>
-        <div></div>
-    </div>
-
-    <!-- ########################################################################################### -->
-    <div class="weather-sec">
-        <img src="../../../assets/weather_icons/set01/big/12.png" alt="weather icon" />
-        <span class="weather-description">Clear</span>
-
-
-    </div>
-
-
-
-    <!-- ############################################################### -->
-    <div class="content-sec">
-        <div class="content-sec-item">
-    <div class="details-item">
-            <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
-            <span>Wind</span>
-            <span>10 km/h</span>
+    
+        <!-- ########################################################################################### -->
+        <div class="weather-sec">
+            <img src="../../../assets/weather_icons/set01/big/12.png" alt="weather icon" />
+            <span class="weather-description">Clear</span>
+    
+    
         </div>
+    
+    
+    
+        <!-- ############################################################### -->
+        <div class="content-sec">
+            <div class="content-sec-item">
         <div class="details-item">
-            <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
-            <span>Wind</span>
-            <span>10 km/h</span>
-        </div>
-        </div>
-        <div class="content-sec-item">
+                <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
+                <span>Wind</span>
+                <span>10 km/h</span>
+            </div>
             <div class="details-item">
-                    <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
-                    <span>Wind</span>
-                    <span>10 km/h</span>
-                </div>
+                <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
+                <span>Wind</span>
+                <span>10 km/h</span>
+            </div>
+            </div>
+            <div class="content-sec-item">
                 <div class="details-item">
-                    <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
-                    <span>Wind</span>
-                    <span>10 km/h</span>
-                </div>
-                </div>
-                
+                        <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
+                        <span>Wind</span>
+                        <span>10 km/h</span>
+                    </div>
+                    <div class="details-item">
+                        <img src="../../../assets/weather_icons/set01/small/12.png" alt="weather icon" />
+                        <span>Wind</span>
+                        <span>10 km/h</span>
+                    </div>
+                    </div>
+                    
+        
+      
+    
+        </div>
     
   
-
-    </div>
-
+}
+@else {
+    <div>Loading ..........................................</div>
+}
 </div>

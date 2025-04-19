@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentWeatherService } from '../../services/current-weather.service';
-import { error, log } from 'console';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,7 +16,7 @@ export class HeaderComponent implements OnInit {
   longitude: number | null = null;
   error: any;
   loading: boolean = false;
-
+  // allDataForWeather
   constructor(
     private _CurrentWeatherService: CurrentWeatherService,
     private http: HttpClient
@@ -27,7 +25,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   this.onLocationButtonClick()
   }
-
+  
   toggleTheme(): void {
     const body = document.body;
     body.classList.toggle('light-theme');
@@ -36,30 +34,20 @@ export class HeaderComponent implements OnInit {
 
 
   getCurrentWeather(place_id: string): void {
-    this._CurrentWeatherService.getCurrentWeather(place_id).subscribe({
-      next: (data: any) => {
-        this.loading = true;
-        this._CurrentWeatherService.allDataForWeather = data;
-        this.loading = false;
-        console.log('Weather data:', data);
-      },
-      error: (err: any) => {
-        this.error = err;
-        this.loading = false;
-        // console.error('Error fetching weather data:', err);
-      }
-    });
-    
+    this._CurrentWeatherService.getCurrentWeather(place_id)
   }
+    
+
 
   onLocationButtonClick(): void {
     if (this.city) {
       this.getCurrentWeather(this.city);
-      // console.log('City:', this.city);
     } else {
       this.getDeviceLocation();
+      // this.getCurrentWeather(this.city);
+
     }
-  }
+  };
 
   private getDeviceLocation(): void {
     if (navigator.geolocation) {
@@ -80,7 +68,7 @@ export class HeaderComponent implements OnInit {
     } else {
       console.error('Geolocation is not supported by this browser.');
     }
-  }
+  };
 
   private fetchCityFromCoordinates(lat: number, lon: number): void {
     const geocodingApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`;
@@ -89,7 +77,7 @@ export class HeaderComponent implements OnInit {
       next: (data) => {
         this.loading = true;
         this.city = data.city || data.locality || 'Unknown';
-        console.log('Fetched city:', this.city);
+        console.log('Fetched city from header:', this.city);
         this.getCurrentWeather(this.city);
         this.loading = false;
       },
