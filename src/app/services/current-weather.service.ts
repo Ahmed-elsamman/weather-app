@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CurrentWeatherService {
 allDataForWeather:BehaviorSubject<any> = new BehaviorSubject<any>(null);
+city: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+city$ = this.city.asObservable(); // Expose city as an observable
 isLoading:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private  _http: HttpClient) { }
 
@@ -19,5 +21,7 @@ isLoading:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
         this.allDataForWeather.next(data);
         this.isLoading.next(false);
       });
+    // return weather;
   }
+   
 }

@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+
   city!: string ;
   latitude: number | null = null;
   longitude: number | null = null;
@@ -35,6 +36,9 @@ export class HeaderComponent implements OnInit {
 
   getCurrentWeather(place_id: string): void {
     this._CurrentWeatherService.getCurrentWeather(place_id)
+    this._CurrentWeatherService.city.next(place_id);
+    console.log('Fetching current city from header :', this._CurrentWeatherService.city.getValue());
+    
   }
     
 
@@ -42,9 +46,9 @@ export class HeaderComponent implements OnInit {
   onLocationButtonClick(): void {
     if (this.city) {
       this.getCurrentWeather(this.city);
+
     } else {
       this.getDeviceLocation();
-      // this.getCurrentWeather(this.city);
 
     }
   };
@@ -53,16 +57,12 @@ export class HeaderComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          this.loading = true;
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
           this.fetchCityFromCoordinates(this.latitude, this.longitude);
-          this.loading = false;
         },
         (error) => {
           this.error = error;
-          this.loading = false;
-          // console.error('Error fetching location:', error);
         }
       );
     } else {
@@ -75,16 +75,11 @@ export class HeaderComponent implements OnInit {
 
     this.http.get<any>(geocodingApiUrl).subscribe({
       next: (data) => {
-        this.loading = true;
         this.city = data.city || data.locality || 'Unknown';
-        console.log('Fetched city from header:', this.city);
         this.getCurrentWeather(this.city);
-        this.loading = false;
-      },
+          },
       error: (err) => {
         this.error = err;
-        this.loading = false;
-        // console.error('Error fetching city from coordinates:', err);
       }
     });
   }
