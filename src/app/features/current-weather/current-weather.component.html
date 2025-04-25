@@ -1,4 +1,11 @@
 <div class="container">
+    @if (error!== null) {
+        <div>
+            {{ error }}
+        </div>
+
+
+    }
 
     @if (!loading && currentWeather) {
 
@@ -10,7 +17,7 @@
             <span class="celsius">°C</span>
         </div>
         <div class="city-sec">
-            <span class="city-name">Location  : {{ city }}</span>
+            <span class="city-name">Weather in: {{ city }}</span>
         </div>
     </div>
 

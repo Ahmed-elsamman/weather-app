@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CurrentWeatherService } from '../../services/current-weather.service';
 import { SpinnerComponent } from "../../shared/spinner/spinner.component";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-current-weather',
@@ -14,9 +15,8 @@ export class CurrentWeatherComponent  implements  OnInit{
   @Input() city: string | undefined;
 
   currentWeather: any=null;
-  error: any;
+  error: any = null;
   loading!: boolean ;
-  // city: string | null = this._CurrentWeatherService.city.getValue() || null;
   constructor(private _CurrentWeatherService:CurrentWeatherService) { }
 
   ngOnInit(): void {
@@ -36,29 +36,19 @@ export class CurrentWeatherComponent  implements  OnInit{
       this.currentWeather = data;
       this.loading = this._CurrentWeatherService.isLoading.getValue();
       console.log('Weather data: from COMP... 2', this.currentWeather);
-    }
-    ,error: (error) => {
-      this.error = error;
-      console.error('Error fetching weather data:', error);
-    }
-  });
+    },
+      error: (error) => {
+        this.error = error;
+        this.loading = false;
+        console.error('Error fetching weather data:', error);
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    });
+   
     }
      
-    
-    // fetchWeather(): void {
-    //   this.loading = true;
-    //   this._CurrentWeatherService.getCurrentWeather(this.city).subscribe({
-    //     next: (data) => {
-    //       this.currentWeather = data.current;
-    //       this.loading = false;
-    //     },
-    //     error: (err) => {
-    //       this.error = err;
-    //       console.error('Error fetching weather data:', err);
-    //       this.loading = false;
-    //     }
-    //   });
-    // }
-  
+
 
 }
