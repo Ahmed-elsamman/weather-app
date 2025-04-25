@@ -1,1 +1,20 @@
-<p>daily-forecast works!</p>
+<div class="daily-forecast-slider">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let item of dailyForecast; let i = index">
+        <ng-template carouselSlide [id]="'slide-' + i">
+          <div class="forecast-card" [attr.data-weather]="item.weather">
+            <div class="day">{{ item.day }}</div>
+            <div class="icon">
+              <img [src]="'../../../assets/weather_icons/set01/small/' + item.icon + '.png'" [alt]="item.summary" [title]="item.summary">
+            </div>
+            <div class="details">
+              <p class="temperature">Temp: {{ item.all_day.temperature }}°C</p>
+              <p class="min-max">Min: {{ item.all_day.temperature_min }}°C | Max: {{ item.all_day.temperature_max }}°C</p>
+              <p class="wind">Wind: {{ item.all_day.wind.speed }} km/h</p>
+            </div>
+            <div class="summary">{{ item.summary }}</div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
