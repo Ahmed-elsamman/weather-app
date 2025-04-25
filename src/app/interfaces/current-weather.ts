@@ -59,9 +59,9 @@ export interface DailyForecastDetails {
   icon: number;
   summary: string;
   all_day: AllDayDetails;
-  morning: any; // Replace with a proper type if morning data is available
-  afternoon: any; // Replace with a proper type if afternoon data is available
-  evening: any; // Replace with a proper type if evening data is available
+  morning: any; 
+  afternoon: any; 
+  evening: any; 
 }
 
 export interface AllDayDetails {

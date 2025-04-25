@@ -15,7 +15,10 @@
       text-align: center;
       background-color: var(--weather-bg, #f9f9f9); /* Default background */
 
-  
+      &:hover {
+        transform: scale(1.05); 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
       .hour {
         font-size: 1.2rem;
         font-weight: bold;

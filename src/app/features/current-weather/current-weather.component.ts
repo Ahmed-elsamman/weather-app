@@ -5,11 +5,12 @@ import { SpinnerComponent } from "../../shared/spinner/spinner.component";
 import { Subscription } from 'rxjs';
 import { HourlyForecastComponent } from "../hourly-forecast/hourly-forecast.component";
 import { CurrentWeatherResponse, DailyForecast, HourlyForecast } from '../../interfaces/current-weather';
+import { DailyForecastComponent } from "../daily-forecast/daily-forecast.component";
 
 @Component({
   selector: 'app-current-weather',
   standalone: true,
-  imports: [SpinnerComponent, CommonModule, HourlyForecastComponent],
+  imports: [SpinnerComponent, CommonModule, HourlyForecastComponent, DailyForecastComponent],
   templateUrl: './current-weather.component.html',
   styleUrl: './current-weather.component.scss'
 })

@@ -13,7 +13,7 @@
       
         <div>
 
-            <span class="temperature">{{ currentWeather?.current?.temperature }}</span>
+            <span class="temperature">{{ currentWeather.current.temperature }}</span>
             <span class="celsius">°C</span>
         </div>
         <div class="city-sec">
@@ -27,9 +27,9 @@
 
     <!-- ########################################################################################### -->
     <div class="weather-sec">
-        <img [src]="'../../../assets/weather_icons/set01/big/' + currentWeather?.current?.icon_num + '.png'"
+        <img [src]="'../../../assets/weather_icons/set01/big/' + currentWeather.current.icon_num + '.png'"
             alt="weather icon" class="weather-icon" />
-        <span class="weather-description"> Weather: {{ currentWeather?.current?.summary }}</span>
+        <span class="weather-description"> {{ currentWeather.current.summary }}</span>
 
 
     </div>
@@ -44,18 +44,18 @@
             <div class="details-item">
                 <img src="../../../assets/weather_icons/set05/small/9.png" alt="wind icon" />
                 <span>Wind : </span>
-                <span>{{ currentWeather?.current?.wind?.speed }} km/h</span>
+                <span>{{ currentWeather.current.wind?.speed }} km/h</span>
             </div>
 
             <div class="details-item">
                 <img src="../../../assets/weather_icons/set03/small/5.png" alt="cloud icon" />
                 <span>Cloud Cover:</span>
-                <span>{{ currentWeather?.current?.cloud_cover }}%</span>
+                <span>{{ currentWeather.current.cloud_cover }}%</span>
             </div>
             <div class="details-item">
                 <img src="../../../assets/weather_icons/set03/small/25.png" alt="precipitation icon" />
                 <span>Precipitation : </span>
-                <span>{{ currentWeather?.current?.precipitation?.total }} mm</span>
+                <span>{{ currentWeather.current.precipitation?.total }} mm</span>
             </div>
         </div>
 
@@ -78,6 +78,12 @@
 
 
 <div class="hourlyForecast-sec">
+    <h2 class="sub-section-title" > Hourly Forecast</h2>
     <app-hourly-forecast [hourlyForecast]="hourlyForecast"></app-hourly-forecast>
 
+
+</div>
+<div class="dailyForecast-sec">
+    <h2 class="sub-section-title" > Daily Forecast </h2>
+            <app-daily-forecast [dailyForecast]="dailyForecast"></app-daily-forecast>
 </div>

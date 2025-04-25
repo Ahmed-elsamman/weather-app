@@ -1,0 +1,81 @@
+.daily-forecast-slider {
+    width: 90%;
+    margin: 2rem auto;
+    overflow-x: auto;
+  
+    .forecast-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      background-color: var(--weather-bg, #f9f9f9);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+  
+      &:hover {
+        transform: scale(1.05); 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+  
+      .day {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+  
+      .icon img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+      }
+  
+      .details {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+  
+        .temperature {
+          font-weight: bold;
+          color: #ff5722;
+        }
+  
+        .min-max {
+          color: #555;
+        }
+  
+        .wind {
+          color: #888;
+        }
+      }
+  
+      .summary {
+        font-size: 0.8rem;
+        color: #666;
+      }
+    }
+  }
+  
+  /* Dynamic background colors based on weather */
+  .forecast-card[data-weather*="sunny"] {
+    --weather-bg: #ffe082; 
+  }
+  
+  .forecast-card[data-weather*="cloudy"] {
+    --weather-bg: #b0bec5;
+  }
+  
+  .forecast-card[data-weather*="rainy"] {
+    --weather-bg: #81d4fa;
+  }
+  
+  .forecast-card[data-weather*="stormy"] {
+    --weather-bg: #90a4ae; 
+  }
+  
+  .forecast-card[data-weather*="snowy"] {
+    --weather-bg: #e1f5fe;
+  }
