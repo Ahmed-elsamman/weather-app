@@ -1,1 +1,25 @@
-<p>hourly-forecast works!</p>
+<div>Some tags before</div>
+<owl-carousel-o [options]="customOptions">
+@for (item of items; track $index) {
+  <ng-container>
+    <ng-template carouselSlide [id]="item.icon">
+        <div class="weather-card">
+            <div class="weather-icon">
+                                  <img [src]="../../../assets/weather_icons/set01/small/${item.icon}" [alt]="item.summary" [title]="item.summary">
+
+            </div>
+            <div class="weather-summary">
+              
+                <p>Temperature: {{ item.temperature }}°C</p>
+                <p>Humidity: {{ item.humidity }}%</p>
+                <p>Wind Speed: {{ item.windSpeed }} km/h</p>
+                <h5>{{ item.summary }}</h5>
+
+        </div>
+    </ng-template>
+  </ng-container>
+
+}
+
+</owl-carousel-o>
+<div>Some tags after</div>
