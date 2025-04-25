@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { CurrentWeatherComponent } from './features/current-weather/current-weather.component';
 import { HourlyForecastComponent } from "./features/hourly-forecast/hourly-forecast.component";
+import { CurrentWeatherResponse } from './interfaces/current-weather';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,8 @@ export class AppComponent implements OnInit {
   weatherData!: CurrentWeatherResponse;
   constructor(private _CurrentWeatherService: CurrentWeatherService) {}
   ngOnInit(): void {
-    // Subscribe to 
-  cityChanges()
+
+  this.cityChanges()
 
   }
 
@@ -37,7 +38,6 @@ export class AppComponent implements OnInit {
     this._CurrentWeatherService.getCurrentWeather(city).subscribe({
       next: (data) => {
         this.weatherData = data; 
-        console.log('Weather data saved in AppComponent:', this.weatherData);
       },
       error: (err) => {
         console.error('Error fetching weather data:', err);

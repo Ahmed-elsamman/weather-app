@@ -1,25 +1,24 @@
-<div>Some tags before</div>
-<owl-carousel-o [options]="customOptions">
-@for (item of items; track $index) {
-  <ng-container>
-    <ng-template carouselSlide [id]="item.icon">
-        <div class="weather-card">
-            <div class="weather-icon">
-                                  <img [src]="../../../assets/weather_icons/set01/small/${item.icon}" [alt]="item.summary" [title]="item.summary">
+<div class="hourly-forecast-slider">
+  <owl-carousel-o [options]="customOptions">
+    @if (hourlyForecast) {
 
-            </div>
-            <div class="weather-summary">
-              
-                <p>Temperature: {{ item.temperature }}°C</p>
-                <p>Humidity: {{ item.humidity }}%</p>
-                <p>Wind Speed: {{ item.windSpeed }} km/h</p>
-                <h5>{{ item.summary }}</h5>
-
+          <ng-container *ngFor="let item of hourlyForecast; let i = index">
+      <ng-template carouselSlide [id]="'slide-' + i">
+        <div class="weather-card" [attr.data-weather]="item.weather">
+          <div class="hour">{{ item.date | date: 'shortTime' }}</div>
+          <div class="icon">
+            <img [src]="'../../../assets/weather_icons/set01/small/' + item.icon + '.png'" [alt]="item.summary" [title]="item.summary">
+          </div>
+          <div class="details">
+            <p class="temperature">{{ item.temperature }}°C</p>
+            <p class="wind">Wind: {{ item.wind.speed }} km/h</p>
+          </div>
+          <div class="summary">{{ item.summary }}</div>
         </div>
-    </ng-template>
-  </ng-container>
+      </ng-template>
+    </ng-container>
+    }
 
-}
 
-</owl-carousel-o>
-<div>Some tags after</div>
+  </owl-carousel-o>
+</div>
